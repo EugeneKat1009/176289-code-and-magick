@@ -47,8 +47,8 @@ var similarListElement = document.querySelector('.setup-similar-list');
 var similarWizardTemplate = document.querySelector('#similar-wizard-template')
     .content.querySelector('.setup-similar-item');
 
-var getRandom = function (index) {
-  var rand = Math.floor(Math.random() * index);
+var getRandom = function (maxNumber) {
+  var rand = Math.floor(Math.random() * maxNumber);
   return rand;
 };
 
