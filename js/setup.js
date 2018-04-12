@@ -39,8 +39,17 @@ var WIZARD_EYES_COLOR = [
   'green'
 ];
 
-var popup = document.querySelector('.setup');
-popup.classList.remove('hidden');
+var WIZARD_FIREBALL_COLOR = [
+  '#ee4830',
+  '#30a8ee',
+  '#5ce6c0',
+  '#e848d5',
+  '#e6e848'
+];
+
+var ESC_BTN = 27;
+var ENTER_BTN = 13;
+
 document.querySelector('.setup-similar').classList.remove('hidden');
 
 var similarListElement = document.querySelector('.setup-similar-list');
@@ -80,3 +89,73 @@ for (var i = 0; i < WIZARDS_COUNT; i++) {
   fragment.appendChild(renderWizard(similarWizards[i]));
 }
 similarListElement.appendChild(fragment);
+
+var setupOpen = document.querySelector('.setup-open');
+var setup = document.querySelector('.setup');
+var setupClose = setup.querySelector('.setup-close');
+
+var onPopupEscPress = function (evt) {
+  if (evt.keyCode === ESC_BTN) {
+    popupClose();
+  }
+};
+
+var popupOpen = function () {
+  setup.classList.remove('hidden');
+  document.addEventListener('keydown', onPopupEscPress);
+};
+
+var popupClose = function () {
+  setup.classList.add('hidden');
+  document.removeEventListener('keydown', onPopupEscPress);
+};
+
+setupOpen.addEventListener('click', function () {
+  popupOpen();
+});
+
+setupOpen.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === ENTER_BTN) {
+    popupOpen();
+  }
+});
+
+setupClose.addEventListener('click', function () {
+  popupClose();
+});
+
+setupClose.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === ENTER_BTN) {
+    popupClose();
+  }
+});
+
+var setupWizard = document.querySelector('.setup-wizard');
+var setupFireball = document.querySelector('.setup-fireball-wrap');
+
+var onWizzardClick = function () {
+  var wizardEyes = setupWizard.querySelector('.wizard-eyes');
+  wizardEyes.style.fill = WIZARD_EYES_COLOR[getRandom(WIZARD_EYES_COLOR.length)];
+  var onInputEyesColor = document.getElementsByName('eyes-color');
+  onInputEyesColor[0].value = wizardEyes.style.fill;
+};
+
+var onFireballClick = function () {
+  setupFireball.style.background = WIZARD_FIREBALL_COLOR[getRandom(WIZARD_FIREBALL_COLOR.length)];
+  var onInputFireballColor = document.getElementsByName('fireball-color');
+  onInputFireballColor[0].value = setupFireball.style.background;
+};
+
+setupWizard.addEventListener('click', onWizzardClick);
+setupWizard.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === ENTER_BTN) {
+    onWizzardClick();
+  }
+});
+
+setupFireball.addEventListener('click', onFireballClick);
+setupFireball.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === ENTER_BTN) {
+    onFireballClick();
+  }
+});
