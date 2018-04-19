@@ -717,6 +717,8 @@ input[type=radio]:checked + .review-mark-label
     vertical-align: middle;
 
     border-radius: 40px;
+
+    z-index: 1;
 }
 
 .setup-user-name
