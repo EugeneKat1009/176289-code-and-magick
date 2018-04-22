@@ -117,9 +117,7 @@
   });
 
   setupOpen.addEventListener('keydown', function (evt) {
-    if (evt.keyCode === ENTER_BTN) {
-      popupOpen();
-    }
+    window.util.isEnterEvent(evt, popupOpen);
   });
 
   setupClose.addEventListener('click', function () {
@@ -127,9 +125,7 @@
   });
 
   setupClose.addEventListener('keydown', function (evt) {
-    if (evt.keyCode === ENTER_BTN) {
-      popupClose();
-    }
+    window.util.isEscEvent(evt, popupClose);
   });
 
   var setupWizard = document.querySelector('.setup-wizard');
