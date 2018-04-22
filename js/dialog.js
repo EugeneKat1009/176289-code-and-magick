@@ -39,8 +39,4 @@
     document.addEventListener('mousemove', onMouseMove);
     document.addEventListener('mouseup', onMouseUp);
   });
-<<<<<<< HEAD
-})()
-=======
 })();
->>>>>>> 9f033cb25885f3fc44e913f9b178ce1c796b76a9
