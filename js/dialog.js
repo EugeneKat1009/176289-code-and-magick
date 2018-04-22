@@ -1,5 +1,6 @@
 'use strict';
 
+(function () {
 var setup = document.querySelector('.setup');
 var dialogHandle = setup.querySelector('.setup-user-pic');
 
@@ -38,3 +39,4 @@ dialogHandle.addEventListener('mousedown', function (evt) {
   document.addEventListener('mousemove', onMouseMove);
   document.addEventListener('mouseup', onMouseUp);
 });
+})();
